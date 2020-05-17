@@ -1,0 +1,71 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>weechat-twitch.py OAuth Generator</title>
+        <link href="//twitchapps.com/bootstrap/css/cosmo.css" rel="stylesheet" />
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" language="javascript">
+            $(document).ready(function() {
+                var oauthHash = location.hash.substr(1);
+                var accessToken = oauthHash.substr(oauthHash.indexOf('access_token=')).split('&')[0].split('=')[1];
+
+                if (accessToken) {
+                    $("#infoTable").hide();
+                    $("#passwordTable").show();
+                    $("#tmiPasswordField").val('oauth:' + encodeURIComponent(accessToken));
+                    $("#tmiExample").html('/nick yourtwitchusername<br />/server irc.twitch.tv 6667 oauth:' + encodeURIComponent(accessToken));
+                }
+            });
+        </script>
+        <style>
+            #tmiPasswordField {
+                cursor: default !important;
+            }
+            #tmiExample {
+                display:block;
+            }
+        </style>
+    </head>
+    <body style="padding-top: 20px;">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div style="width:600px;margin:auto;">
+                        <table class="table table-bordered table-striped" id="passwordTable" style="display:none;">
+                            <tr>
+                                <th>weechat-twitch.py OAuth Generator</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="text-align:center;padding-bottom:10px;">
+                                        <p>
+                                            Below is your OAuth token
+                                        </p>
+                                        <!-- <code id="tmiPassword" onClick="this.select();"></code> -->
+                                        <input class="span9" type="text" id="tmiPasswordField" onClick="this.select();" readonly="readonly">
+                                        <br />
+                                        <br />
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table table-bordered table-striped" id="infoTable">
+                            <tr>
+                                <th>weechat-twitch.py OAuth Generator</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div style="text-align:center;padding-bottom:10px;">
+                                        <a href="https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=awtv6n371jb7uayyc4jaljochyjbfxs&redirect_uri=http://localhost&scope=chat:read+chat:edit+channel:moderate+whispers:read+whispers:edit+channel_editor" class="btn btn-large btn-primary">Connect</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+				</div>
+            </div>
+        </div>
+    </body>
+</html>
+
