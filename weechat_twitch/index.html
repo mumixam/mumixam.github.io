@@ -13,8 +13,8 @@
                 if (accessToken) {
                     $("#infoTable").hide();
                     $("#passwordTable").show();
-                    $("#tmiPasswordField").val('oauth:' + encodeURIComponent(accessToken));
-                    $("#tmiExample").html('/nick yourtwitchusername<br />/server irc.twitch.tv 6667 oauth:' + encodeURIComponent(accessToken));
+		    $("#oauthpass").val('/set irc.server.twitch.password \"oauth:' + encodeURIComponent(accessToken) + '\"');
+	            $("#oauthtoken").val('/set plugins.var.python.twitch.token '+ encodeURIComponent(accessToken));
                 }
             });
         </script>
@@ -41,9 +41,10 @@
                                     <div style="text-align:center;padding-bottom:10px;">
                                         <p>
                                             Below is your OAuth token
+                                            Enter the following into weechat
                                         </p>
-                                        <!-- <code id="tmiPassword" onClick="this.select();"></code> -->
-                                        <input class="span9" type="text" id="tmiPasswordField" onClick="this.select();" readonly="readonly">
+                                        <input class="span9" type="text" id="oauthpass" onClick="this.select();" readonly="readonly">
+					<input class="span9" type="text" id="oauthtoken" onClick="this.select();" readonly="readonly">
                                         <br />
                                         <br />
                                     </div>
@@ -57,7 +58,7 @@
                             <tr>
                                 <td>
                                     <div style="text-align:center;padding-bottom:10px;">
-                                        <a href="https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=awtv6n371jb7uayyc4jaljochyjbfxs&redirect_uri=http://localhost&scope=chat:read+chat:edit+channel:moderate+whispers:read+whispers:edit+channel_editor" class="btn btn-large btn-primary">Connect</a>
+                                        <a href="https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=awtv6n371jb7uayyc4jaljochyjbfxs&redirect_uri=https://mumixam.github.io/weechat_twitch/&scope=chat:read+chat:edit+channel:moderate+whispers:read+whispers:edit+channel_editor" class="btn btn-large btn-primary">Connect</a>
                                     </div>
                                 </td>
                             </tr>
