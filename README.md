@@ -3,4 +3,4 @@
 
 twitch oauth token generator
 
-http://mumixam.github.io/weechat_twitch/
+https://mumixam.github.io/weechat_twitch/
